@@ -1,0 +1,25 @@
+﻿Lab02-Image Processing and Analysis
+
+
+Yêu cầu : 
+
+
+1/ Chọn 1 ảnh từ internet bất kỳ và thực hiện các thao tác sau 
+* Viết thành một function cho biết thông tin của bức ảnh : Ảnh màu hay ảnh xám và giá trị min max tương ứng với từng kênh màu
+* Hiển thị 24 bức ảnh theo bit của từng kênh màu R, G, B (mỗi kênh 8 ảnh x 3 kênh = 24 ảnh bit) 
+* Hiển thị 24 bức ảnh theo bit của từng kênh màu H, S, V (mỗi kênh 8 ảnh x 3 kênh = 24 ảnh bit) 
+* Cho biết trong 24 ảnh bit theo kênh R, G, B có ảnh nào có thể dùng để trích xuất đối tượng hay không. Nếu có thì hiển thị ảnh bit đó ra
+* Cho biết trong 24 ảnh bit theo kênh H, S, V có ảnh nào có thể dùng để trích xuất đối tượng hay không. Nếu có thì hiển thị ảnh bit đó ra
+
+
+2/ Chọn một bức ảnh có nhiều mặt người trên internet và thực hiện các thao tác sau 
+* Viết 1 function input ảnh màu và xuất ảnh chân dung xám và chân dùng màu của ảnh đó 
+* Tìm chọn range màu lower và upper để trích xuất được các khuôn mặt trong ảnh màu 
+
+
+3/ Chọn một bức ảnh từ internet về 1 đồ vật và thực hiện các thao tác sau :
+* Xuất ảnh xoay các góc 30,45,60 độ
+* Xuất ảnh đối xứng qua trục hoành và trục tung đi qua tâm ảnh
+* Xuất ảnh inversion
+* Xuất ảnh enhance contrast
+* Xuất ảnh gamma và log enhancement 

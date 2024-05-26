@@ -1,0 +1,27 @@
+﻿Lab03-Image Processing and Analysis
+Yêu cầu : 
+
+
+1/ Tìm 1 ảnh trên internet và thực hiện các thao tác sau 
+* Làm mờ ảnh với các kernel 3x3 và 5x5 
+* Xuất giá trị đo mức độ mờ 
+* Viết dòng thông tin về giá trị mức độ mờ trên ảnh 
+
+
+2/ Tìm 1 ảnh trên internet và thực hiện các thao tác sau 
+* Làm rõ ảnh với các kernel 3x3 và 5x5 
+* Xuất giá trị đo mức độ rõ 
+* Viết dòng thông tin về giá trị mức độ rõ trên ảnh 
+
+
+3/ Tạo một thư mục ảnh gồm 5 ảnh (kiếm từ Internet)
+* Viết hàm đọc toàn bộ ảnh trong thư mục “Image_Input” đó vào một List ảnh (Gợi ý : tìm internet cách đọc thư mục) 
+* Định nghĩa ngưỡng mờ dựa trên giá độ đo mờ
+* Đọc lần lượt các ảnh : nếu ảnh nào ngoài ngưỡng mờ ta ghi một dòng thông tin trên ảnh là “Blur Image :” kèm giá trị mờ. Nếu ảnh nào tốt thì ta ghi “Good Image” trên ảnh. 
+* Tất cả các ảnh sau khi đánh giá được lưu vào một thư mục “Image_BlurDetection_Output”
+4/ Tìm 1 ảnh trên Internet và thực hiện các bước sau :
+* Xuất ảnh từng điểm ảnh hiển thị giá trị RGBMax 
+* Xuất các vị trí có giá trị R đạt max, G đạt max và B đạt max
+* Thưc hiện làm mờ ảnh rồi sau đó làm rõ ảnh và so sánh giá trị độ đo mờ có giống ảnh gốc không 
+* Thưc hiện làm rõ ảnh rồi sau đó làm mờ ảnh và so sánh giá trị độ đo mờ có giống ảnh gốc không
+* Tìm cạnh và tạo ra các ảnh về cạnh sau : ảnh cạnh ngang, cạnh dọc và ảnh cạnh tổng 

@@ -1,0 +1,21 @@
+﻿Lab01 – Basic Color And Gray Image Processing
+
+
+Yêu cầu
+1/ Chọn 1 ảnh từ internet bất kỳ và thực hiện các thao tác sau 
+* Tạo ảnh grayscale 
+* Tạo ảnh hsv và hiển thị các kênh hue, saturation và value
+* Chọn ngưỡng hue để trích xuất đối tượng chủ đạo trong ảnh (hiển thị ảnh màu đối tượng sau khi trích xuất)
+* Hiển thị histogram của 3 kênh màu h,s,v và r,g,b 
+
+
+2/ Chọn 1 ảnh khác từ internet bất kỳ và thực hiện các bước sau 
+* Tạo ảnh xám từ ảnh màu
+* Làm mờ ảnh 
+* Làm nhiễu ảnh
+* Hiển thị histogram của ảnh xám và cân bằng histogram, hiển thị ảnh sau khi cân bằng
+* Cân bằng 3 kênh màu hsv cùng lúc và hiển thị ảnh kết quả sau khi cân bằng
+* Enhance ảnh bằng cách cân bằng histogram kênh s và v 
+* Thực hiện các biến đổi gamma và hiển thị ảnh màu tương ứng
+* Chọn ngưỡng mức tối và ngưỡng mức sáng mà ở đó dưới mức tối sẽ cho tối hơn và trên mức sáng sẽ cho sáng hơn trên kênh màu value trong hsv. Sau đó hiển thị ảnh kết quả sau khi enhance 
+* Xuất ảnh biên/cạnh của ảnh gốc

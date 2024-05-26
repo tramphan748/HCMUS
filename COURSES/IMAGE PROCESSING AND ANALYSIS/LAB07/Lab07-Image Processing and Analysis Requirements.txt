@@ -1,0 +1,24 @@
+﻿Lab07-Image Processing and Analysis
+
+
+1/ Với mỗi các phương pháp Morphology sau kiếm 1 ảnh từ internet làm ví dụ thể hiện rõ kết quả nhất :
+* Dilation 
+* Erosion
+* Closing
+* Opening
+* Gradient 
+2/ Kiếm một ảnh biển số xe và thực hiện kết hợp các phương pháp Morphology để trích các con số trên biển số xe 
+3/ Kiếm một ảnh chụp biển hiệu shop bán hàng kết hợp các phương pháp Morphology để trích các thông tin cửa hiệu 
+4/ Chụp 1 dòng chat của bạn và sau đó dùng Morphology để trích các dòng chat đó ra 
+
+
+Ghi chú: 
+Bài thực hành : ISP Lab07
+Tiêu đề Email : MSSV_HoTenSinhVien_ ISP Lab07
+Gửi mail : tuantran261083course@gmail.com 
+Nội Dung Email : 
+- Ghi đã làm đầy đủ hay thiếu bài gì, chức năng gì 
+- Ghi có làm thêm được gì hay không (khuyến khích làm thêm để cộng điểm)
+- Nếu nộp trễ ghi lý do nộp trễ 
+Dealine : 25/12/2023 
+File nộp : File MSSV_HoTenSinhVien_ ISP Lab07.pdf chụp hình code và chụp hình kết quả chạy (không cần gửi code)

@@ -1,0 +1,25 @@
+Lab02-Image Processing and Analysis
+
+
+Requirements
+
+
+1/ Choose an image from any internet and do the following
+* Write a function that shows information about the photo: Color image or gray image and min max value corresponding to each color channel
+* Displays 24 bit images of each color channel R, G, B (each channel 8 images x 3 channels = 24 bit images)
+* Displays 24 bit images of each color channel H, S, V (each channel 8 images x 3 channels = 24 bit images)
+* Indicates whether among the 24 bit images in channels R, G, B, there are any images that can be used to extract objects. If so, display that bit image
+* Indicates whether among the 24 bit images according to channels H, S, V, there are any images that can be used to extract objects. If so, display that bit image
+
+
+2/ Choose a photo with many human faces on the internet and do the following
+* Write a function that inputs a color image and outputs a grayscale portrait and portrait using the color of that image
+* Find and select the lower and upper color ranges to extract faces in color images
+
+
+3/ Choose a photo from the internet of an object and do the following:
+* Export images rotated to 30,45,60 degrees
+* Output the image symmetrically through the horizontal axis and the vertical axis through the center of the image
+* Export inversion images
+* Export enhanced contrast images
+* Export gamma images and log enhancement

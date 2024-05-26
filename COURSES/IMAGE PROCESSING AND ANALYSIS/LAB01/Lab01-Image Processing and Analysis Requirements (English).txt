@@ -1,0 +1,22 @@
+Lab01 - Basic Color and Gray Image Processing
+
+Requirements
+
+1. Select any image from the internet and perform the following operations:
+
+Create a grayscale image
+Create an HSV image and display the hue, saturation, and value channels
+Select a hue threshold to extract the main object in the image (display the color image of the object after extraction)
+Display the histogram of the 3 color channels h, s, v and r, g, b
+
+2. Select another image from the internet and perform the following steps:
+
+Create a grayscale image from a color image
+Blur the image
+Add noise to the image
+Display the histogram of the grayscale image and equalize the histogram, display the image after equalization
+Equalize the 3 HSV color channels at the same time and display the result image after equalization
+Enhance the image by equalizing the histogram of the s and v channels
+Perform gamma transformations and display the corresponding color images
+Select a dark threshold and a light threshold where values below the dark threshold will be darker and values above the light threshold will be brighter on the value color channel in HSV. Then display the result image after enhancement
+Extract the edges of the original image
