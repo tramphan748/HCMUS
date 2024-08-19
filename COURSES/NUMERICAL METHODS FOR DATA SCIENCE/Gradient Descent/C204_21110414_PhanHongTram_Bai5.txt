@@ -1,0 +1,109 @@
+# Phan Hong Tram_21110414
+import numpy as np
+import matplotlib.pyplot as plt
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def function(w):
+    x = w[0]
+    y = w[1]
+    return (x**2 + y - 7)**2 + (x - y + 1)**2
+
+def grad_function(w):
+    x = w[0]
+    y = w[1]
+    g = np.zeros_like(w)
+    g[0] = 4*x**3 + 4*x*y - 26*x - 2*y + 2
+    g[1] = 2*x**2 - 2*x + 4*y - 16
+    return g
+
+
+# Numerical gradient dùng để kiểm tra đạo hàm hàm nhiều biến có đúng hay không
+def numerical_grad_function(w, function):
+    eps = 1e-6
+    g = np.zeros_like(w)
+    for i in range(len(w)):
+        w_pos = w.copy()
+        w_neg = w.copy()
+        w_pos[i] += eps
+        w_neg[i] -= eps
+        g[i] = (function(w_pos)-function(w_neg))/(2*eps)
+    return g
+
+def check_grad(w, function, grad):
+    w = np.random.rand(w.shape[0], w.shape[1])
+    gradient = grad_function(w)
+    numerical_gradient = numerical_grad_function(w, function)
+    if np.linalg.norm(gradient-numerical_gradient) < 1e-4:
+        return True
+    else:
+        return False
+
+w = np.random.randn(2, 1)
+print( 'Checking gradient: ', check_grad(w, function, grad_function))
+
+def gradient_descent(learning_rate, w0, N, eps):
+    w = [w0]
+    i = 0
+    for i in range(N):
+        w_new = w[-1] - learning_rate*grad_function(w[-1])
+        if np.linalg.norm(grad_function(w_new)) < eps:
+            print("Found minimum. ")
+            break
+        w.append(w_new)
+        # print('iter %d: ' % i, w[-1].T)
+    else: print("Accelerated gradient descent did not converge after", N, "iterations.")
+    return (w, i)
+
+learning_rate = 0.01
+w0 = np.array([[0], [0]])
+N = 10000
+eps = 1e-6
+
+(w1, iter) = gradient_descent(learning_rate, w0, N, eps)
+
+print(f'Nghiệm = {w1[-1].T}, g(x,y) = {function(w1[-1])}, hội tụ sau {iter} vòng lặp')
+
+
+#-----------------------------------------------------------------
+# Accelerated Gradient Descent
+def g(x, y):
+    return (x**2 + y - 7)**2 + (x - y + 1)**2
+
+def grad_g(x, y):
+    return np.array([
+        4 * x * (x**2 + y - 7) + 2 * (x - y + 1),
+        2 * (x**2 + y - 7) - 2 * (x - y + 1)
+    ])
+
+def accelerated_gradient_descent(grad, learning_rate, x0, N, epsilon):
+    x_prev = x0
+    x = x0
+    i = 0
+    while i < N:
+        y = x + (i - 1) / (i + 2) * (x - x_prev)
+        x_new = y - learning_rate * grad(y[0], y[1])
+        if np.linalg.norm(grad(x_new[0], x_new[1])) < epsilon:
+            print("Found minimum.")
+            return x_new, i
+        x_prev = x
+        x = x_new
+        i += 1
+    print("Accelerated gradient descent did not converge after", N, "iterations.")
+    return x, i
+
+x0 = np.array([0, 0]) # giá trị ban đầu
+learning_rate = 0.01 # learning rate
+N = 10000 # bước lặp lớn nhất
+epsilon = 1e-6 # sai số
+
+# Tìm cực tiểu của hàm số g bằng accelerated gradient descent
+x_min, i = accelerated_gradient_descent(grad_g, learning_rate, x0, N, epsilon)
+# In ra giá trị của x tại đó hàm số f có giá trị cực tiểu
+print(f"Giá trị của x tại đó hàm số g có giá trị cực tiểu là: {x_min[0]}")
+print(f"Giá trị của y tại đó hàm số g có giá trị cực tiểu là: {x_min[1]}")
+# In ra giá trị của hàm số f tại điểm cực tiểu
+print("g(x,y):", g(x_min[0],x_min[1]))
+# In ra số vòng lặp
+print(f"hội tụ sau {i} vòng lặp")

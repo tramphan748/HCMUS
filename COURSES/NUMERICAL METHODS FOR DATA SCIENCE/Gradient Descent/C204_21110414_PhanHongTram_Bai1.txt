@@ -1,0 +1,32 @@
+# Phan Hong Tram_21110414
+import numpy as np
+import matplotlib.pyplot as plt
+
+# bài 1
+def y_function(x):
+    return x**2 + 5*np.sin(x)
+def calculate_df(x):
+    return 2*x+5*np.cos(x)
+
+def gradient_descent(x0, learning_rate, num_iterations, epsilon):
+    x = x0
+    grad = calculate_df(x)
+    for i in range(num_iterations):
+        # Cập nhật vị trí mới
+        x_new = x - learning_rate * grad
+        grad_new = calculate_df(x_new)
+        if np.abs(grad_new) < epsilon:
+            # In ra giá trị hiện tại của hàm số
+            print(f"solution = {x_new}")
+            break
+        x = x_new
+        i += 1 
+    else: print(f'The algorithm fails after {num_iterations} iterations')
+
+
+x0 = 2.0
+learning_rate = 0.01
+N = 1000
+epsilon = 0.01
+
+gradient_descent(x0, learning_rate, N, epsilon)

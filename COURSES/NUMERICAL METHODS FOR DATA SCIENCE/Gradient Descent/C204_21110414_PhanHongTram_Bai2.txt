@@ -1,0 +1,95 @@
+# Phan Hong Tram_2111014
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+
+def f(x):
+    return x**2
+
+def grad(x):
+    return 2*x
+
+# 2a
+def gradient_descent(eta, x0, num_iterations, epsilon):
+    x = [x0]
+    for i in range(num_iterations):
+        x_new = x[-1] - eta*grad(x[-1])
+        if np.abs(grad(x_new)) < epsilon:
+            print(f"solution = {x_new}, f(x) = {f(x_new)}, f'(x) = {grad(x_new)}, num_iterations = {i}")
+            break
+        x.append(x_new)
+    else: print(f'The algorithm fails after {num_iterations} iterations')   
+    return (x, i)
+
+(x1, it1) =  gradient_descent(eta=0.1, x0 = 2.0, num_iterations=1000, epsilon=1e-5)
+
+#---------------------------------------------------
+# 2b: Thay đổi learning rate, lập bảng và vẽ hình để khảo sát.
+def gradient_descent_2b(eta, x0, num_iterations, epsilon):
+    x_histories = []
+    for learning_rate in eta:
+        x = x0
+        x_list = [x]
+        for i in range(num_iterations):
+            x = x - learning_rate*grad(x)
+            if np.abs(grad(x)) < epsilon:
+                print(f"With learning rate = {learning_rate}, solution = {x}, f(x) = {f(x)}, f'(x) = {grad(x)}, num_iterations = {i}")
+                break
+            x_list.append(x)
+            i +=1
+        else: print(f'The algorithm fails after {num_iterations} iterations')
+        x_histories.append(x_list)
+    return x_histories
+
+eta = [0.015, 0.05, 0.1, 0.2, 0.3]
+x0 = 2
+N = 1000
+eps = 1e-5
+
+myGD_2b =  gradient_descent_2b(eta=eta, x0 = x0, num_iterations=N, epsilon=eps)
+
+for i, x_list in enumerate(myGD_2b):
+  plt.plot(x_list, label=f'Learning Rate: {eta[i]}')
+
+plt.xlabel('Iteration')
+plt.ylabel('x')
+plt.title('Number of iterations for different learning rates')
+plt.legend()
+plt.show()
+
+#---------------------------------------------------
+# 2c: Thay đổi điểm bắt đầu, lập bảng và vẽ hình để kháo sát.
+def gradient_descent_2c(eta, x0, num_iterations, epsilon):
+    x = [x0]
+    i = 0
+    for i in range(num_iterations):
+        x_new = x[-1] - eta*grad(x[-1])
+        if np.abs(grad(x_new)) < epsilon:
+            print(f"With x0 = {x0}, solution = {x_new}, f(x) = {f(x_new)}, f'(x) = {grad(x_new)}, num_iterations = {i}")
+            break
+        x.append(x_new)
+    else: print(f'The algorithm fails after {num_iterations} iterations')   
+    return x
+
+
+def plot_diff_x0(x0_values, eta, num_iterations, epsilon):
+    plt.figure(figsize=(10, 6))
+    for i, x0 in enumerate(x0_values):
+        myGD_2c = gradient_descent_2c(eta, x0, num_iterations, epsilon)
+        plt.plot(range(len(myGD_2c)), myGD_2c, label=f'x0 = {x0}')
+
+    plt.xlabel("Iterations")
+    plt.ylabel("x0")
+    plt.title(f"Number iterations for difference initial values (Learning Rate = {eta})")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+
+eta = 0.05  # Learning rate
+num_iterations = 1000
+epsilon = 1e-5
+
+x0_values = [1.0, 1.5, 2.0, 2.5, 3.0] 
+
+plot_diff_x0(x0_values, eta, num_iterations, epsilon)

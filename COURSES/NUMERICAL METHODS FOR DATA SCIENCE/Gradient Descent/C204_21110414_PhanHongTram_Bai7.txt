@@ -1,0 +1,70 @@
+# Phan Hong Tram_21110414
+
+import numpy as np
+
+def loss(X, y, theta):
+    m = len(X)
+    y_prev = X.dot(theta)
+    L = (1/m)*np.sum(np.square(y_prev - y))
+
+    return L
+
+def gradient(X, y, theta):
+    m = len(X)
+    y_prev = X.dot(theta)
+    grad = (1/m)*X.T.dot(y_prev-y)
+    return grad
+
+def stochastic_gradient_descent(X, y, learning_rate, theta_init, N, eps):
+    m = len(X)
+    theta = theta_init.copy()
+    L_history = np.zeros(N)
+
+    for i in range(0,N):
+        rand_index = np.random.randint(0, m)
+
+        X_i = np.array([X[rand_index, :]]).reshape(1, -1)
+        y_i = np.array([y[rand_index, :]]).reshape(1, -1)
+        
+        grad = gradient(X_i, y_i, theta)
+        theta_new = theta - learning_rate*grad
+        if np.linalg.norm(gradient(X_i, y_i, theta_new)) < eps:
+            print('Found minimum', theta_new.T)
+            break
+        theta = theta_new
+        L_history[i] = loss(X, y, theta)
+    else: print("Accelerated gradient descent did not converge after", N, "iterations.")
+    return theta, L_history, i
+
+
+# Age
+X = np.array([[39], [36], [45], [47], [65], [46], [67], [42], [67], [56], [64], [56], [59], [34], [42], [48], [45], [17], [20], [19]])
+# HATT
+y = np.array([[144], [136], [138], [145], [162], [142], [170], [124], [158], [154], [162], [150], [140], [110], [128], [130], [135], [114], [116], [124]])
+
+# X = np.array([[1], [2], [3], [4], [5]])
+# y = np.array([[2], [4], [5], [4], [5]])
+
+#one = np.ones((X.shape[0],1))
+X = np.concatenate([np.ones((len(X),1)), X], axis = 1)
+
+theta_init = np.zeros((2,1))
+eta = 0.01
+N = 100
+epsilon = 1e-5
+
+theta, L_history, i = stochastic_gradient_descent(X, y, eta, theta_init, N, epsilon)
+
+print("Hệ số tìm được: ", theta.ravel())
+print("Số vòng lặp: ", i)
+age_new = 26
+HATT_new = theta[0] + theta[1]*age_new
+print("Huyết áp tâm thu của một người ở độ tuổi 26 là: ", HATT_new)
+
+import matplotlib.pyplot as plt
+plt.plot(L_history)
+plt.xlabel('Iterations')
+plt.ylabel('Loss')
+plt.title('LR with SGD')
+plt.show()
+print(L_history)
